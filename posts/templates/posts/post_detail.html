@@ -1,0 +1,29 @@
+{% extends "posts/base.html" %}
+
+{% block content %}
+	<div class="p-4 mb-2 bg-light text-dark">
+
+		<h2>{{post.title}}</h2>
+		<h4>By {{ post.author }}</h4>
+		<h4>Published On {{ post.published }}</h4>
+		<h3><p>{{ post.content }}</p></h3>
+		<h6>Created On {{ post.created }}</h6>
+		<h6>Last Update {{ post.updated }}</h6>
+		<h6>State : {{ post.state }}</h6>
+		
+	</div>
+
+	<div class='content-section'>
+		{% ifequal request.user post.author %}
+			<button type="submit" class="btn btn-info"><a href="{% url 'post-update' post.id %}" >Update</a></button>
+			<button type="submit" class="btn btn-danger"><a href="{% url 'post-delete' post.id %}" >Delete</a></button>
+		{% endifequal %}
+
+		{% ifequal request.user post.author %}
+			<button type="submit" class="btn btn-info"><a href="{% url 'my-list' %}" >Back</a></button>	
+		{% else %}
+			<button type="submit" class="btn btn-info"><a href="{% url 'post-list' %}" >Back</a></button>	
+		{% endifequal %}	
+		
+	</div>
+{% endblock content %}

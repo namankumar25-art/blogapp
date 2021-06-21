@@ -1,0 +1,27 @@
+{% extends "posts/base.html" %}
+
+{% block content %}
+	<div class="p-4 mb-2 bg-light text-dark">
+		<h1>Posts By {{ request.user }}</h1>
+
+	{% for post in page_obj %}
+
+		<h3><a href="{% url 'post-detail' post.id %}">{{post.title}}</a></h3>
+		<h5>By {{ post.author }}</h5>
+		<h6>Published On {{ post.published }}</h6>
+
+	{% endfor %}
+	</div>
+
+	<div>
+		<span>{% if page_obj.has_previous %}
+				<a href="?page={{ page_obj.previous_page_number }}">Previous</a>		
+			{% endif %}
+		</span>
+		<span>{{ page_obj.number }} </span>
+			{% if page_obj.has_next %}
+				<a href="?page={{ page_obj.next_page_number }}">Next</a>
+			{% endif %}
+		</span>	
+	</div>
+{% endblock content %}

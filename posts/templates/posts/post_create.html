@@ -1,0 +1,39 @@
+{% extends "posts/base.html" %}
+
+{% block content %}
+	<div class='container-sm '>
+		<form method='POST'>
+			
+			{% csrf_token %}
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">Title</span>
+			  {{ form.title }}
+			</div>
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">Content</span>
+			  {{ form.content }}
+			</div>
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon2">Author</span>
+			  {{ request.user }}
+			</div>
+			
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">Published</span>
+			  {{ form.published }}
+			</div>
+			
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">State</span>
+			  {{ form.state }}
+			</div>
+			<button type="submit" class="btn btn-info">Submit</button>
+			{% if form.instance.author %}
+				<a class="btn btn-success" href="{% url 'post-detail' post.id %}" role="button">BACK</a>
+			{% endif %}
+
+		</form>
+		
+	</div>
+		
+{% endblock content %}

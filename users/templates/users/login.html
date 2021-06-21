@@ -1,0 +1,32 @@
+{% extends "posts/base.html" %}
+
+{% block content %}
+	<div class='container-sm '>
+		<form method='POST'>
+			
+			{% csrf_token %}
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">Username &nbsp;&nbsp;
+			  	<input id="id_username" name="username" 
+                                   type="text" class="form-control" size="20">
+			  </span>
+			</div>
+			
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">Password &nbsp;&nbsp;
+			  	<input id="id_password" name="password" 
+                                   type="password" class="form-control" size="20">
+              </span>                     
+			</div>
+			<div class="input-group mb-10">
+				<button type="submit" class="btn btn-info">Sign In</button>
+			</div>
+			
+
+		</form>
+		<div class='content-section'>Do not Have an Account?
+			<a href="{% url 'register' %}" class="btn btn-success" role="button">Sign Up</a>
+		</div>
+	</div>
+		
+{% endblock content %}

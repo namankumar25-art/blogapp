@@ -1,0 +1,29 @@
+{% extends "posts/base.html" %}
+
+{% block content %}
+	<h1> Welcome to {{request.user.username.upper}}'s Profile </h1>
+	<img src="{{ user.profile.image.url }}" width="100" height="200" >
+
+	<form method='POST' enctype="multipart/form-data">
+			
+			{% csrf_token %}
+			<div class="input-group mb-3">
+			 	<span class="input-group-text" id="basic-addon1">Profile Information</span>
+			</div>
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">Username</span>
+			  {{ user_update_form.username }}
+			</div>
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">Email</span>
+			  {{ user_update_form.email }}
+			</div>
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">Image</span>
+			  {{ profile_update_form.image }}
+			</div>			 			
+			<button type="submit" class="btn btn-info">Update</button>
+
+		</form>
+
+{% endblock content %}

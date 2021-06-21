@@ -1,0 +1,34 @@
+{% extends "posts/base.html" %}
+
+{% block content %}
+	<div class='container-sm '>
+		<form method='POST'>
+			
+			{% csrf_token %}
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">Username</span>
+			  {{ form.username }}
+			</div>
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">Email</span>
+			  {{ form.email }}
+			  <span class="input-group-text" id="basic-addon2">@example.com</span>
+			</div>
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">Password</span>
+			  {{ form.password1 }}
+			</div>
+			<div class="input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">Confirm Password</span>
+			  {{ form.password2 }}
+			</div>
+			<button type="submit" class="btn btn-info">Sign Up</button>
+
+		</form>
+		<div class='content-section'>Already Have an Account
+			<a href="{% url 'login' %}" class="btn btn-success" role="button">Sign In</a>
+	
+		</div>
+	</div>
+		
+{% endblock content %}
